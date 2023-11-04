@@ -14,7 +14,7 @@ class SG():
     objc_logTemplate = """
                 var arg$index = args[$index]
                 if (targetMethod.argumentTypes[$index] == "pointer"){
-                        arg = ObjC.Object(arg)
+                        arg$index = ObjC.Object(arg$index)
                     }
                 send("arg$index:"+arg$index);"""
     
