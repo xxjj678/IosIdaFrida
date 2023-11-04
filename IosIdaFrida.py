@@ -12,11 +12,11 @@ class SG():
     # 这里没有考虑ida 分析的参数个数于frida 获取到的参数个书不一致问题
     # 有可能数组会越界(一般ida静态分析出来的参数个数是否都是<= 实际参数个数?)
     objc_logTemplate = """
-                var arg = args[$index]
+                var arg$index = args[$index]
                 if (targetMethod.argumentTypes[$index] == "pointer"){
                         arg = ObjC.Object(arg)
                     }
-                send("arg$index:"+ObjC.Object(arg));"""
+                send("arg$index:"+arg$index);"""
     
     
 
