@@ -91,7 +91,8 @@ setImmediate(hook_${className}_$functionName)
                 func_info['func_offset']  = hex(f.start_ea - base)
               
                 # 判断是否为导入函数
-                if f.end_ea - f.start_ea <= 8:
+                # bugfix 如果是objectc函数，则不用判断。否则小的objectc函数会被误判
+                if f_type != 0 and  f.end_ea - f.start_ea <= 8:
                     f_type = 2
                 
                 func_info['func_type']  = f_type
